@@ -1,0 +1,35 @@
+.navbar{
+    height: 30px;
+    background-color: #70b6b9be;
+    padding: 20px;
+}
+
+.navbar-container {
+    width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-container > .navbar-brand > .navbar-logo {
+    color: #3D4C53;
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.navbar-container > .navbar-menu > li{
+    list-style-type: none;
+    display: inline;
+    padding: 0 0 0 20px;
+}
+
+
+.navbar-container > .navbar-menu > li > a {
+    text-decoration: none;
+    color: #3D4C53;
+}
+
+.navbar-container > .navbar-menu > li > a:hover {
+    text-decoration: underline;
+}

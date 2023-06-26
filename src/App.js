@@ -1,23 +1,20 @@
-import logo from './logo.svg';
+import react,{useState} from 'react'
 import './App.css';
+import Navbar from './component/Navbar';
+import Footer from './component/Footer';
+import Blogs from './component/Blogs';
+import Form from './component/Form';
+import BlogItems from './data/blog-post.json'
 
 function App() {
+const [blogs, setBlogs] = useState(BlogItems)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar/>
+      <Form/>
+      <Blogs blogs={blogs}/>
+      <Footer/>
     </div>
   );
 }

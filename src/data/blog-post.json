@@ -1,0 +1,24 @@
+[
+    {
+        "title": "How to manipulate data using props and context",
+        "author": "JV Faeldon",
+        "content": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio exercitationem earum voluptatibus ex! Modi nesciunt numquam inventore ullam culpa suscipit nihil, sed vel illum similique pariatur consequuntur explicabo ex officia.",
+        "date_posted": "2023-06-26",
+        "id":"1"
+    },
+    {
+        "title": "Lifecycle of React Components",
+        "author": "JV Faeldon",
+        "content": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio exercitationem earum voluptatibus ex! Modi nesciunt numquam inventore ullam culpa suscipit nihil, sed vel illum similique pariatur consequuntur explicabo ex officia.",
+        "date_posted": "2023-06-26",
+        "id":"2"
+    },
+    {
+        "title": "Reusable components using react hooks",
+        "author": "JV Faeldon",
+        "content": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio exercitationem earum voluptatibus ex! Modi nesciunt numquam inventore ullam culpa suscipit nihil, sed vel illum similique pariatur consequuntur explicabo ex officia.",
+        "date_posted": "2023-06-26",
+        "id":"3"
+    }
+
+]

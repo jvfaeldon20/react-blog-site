@@ -1,0 +1,45 @@
+.card-container {
+    width: 1200px;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    margin: auto;
+    padding: 10px;
+    padding-left: 40px;
+}
+
+.card-container > .card-header {
+    width: 100%;
+    margin: auto;
+}
+
+.card-container > .card-item {
+    background-color: #61aaac21;
+    height: 350px;
+    width: 300px;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.card-container > .card-item > .card-footer > .btn-success {
+    margin-right: 5px;
+}
+
+.card-item > .card-main > .blog-author {
+    margin: 20px 0;
+    font-size: 15px;
+}
+
+.card-item > .card-main > .blog-author > .author-name {
+    color: #3D4C53;
+    font-weight: 500;
+    width: fit-content;
+}
+
+.card-item > .card-main > .blog-author > .date-posted {
+    color: #3D4C53;
+    font-weight: 200;
+    margin-left: 30px;
+}
