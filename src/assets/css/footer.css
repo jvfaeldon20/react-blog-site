@@ -24,6 +24,10 @@
     color: #9D9DB5;
 }
 
+.footer-container > .footer-menu > li > a:hover {
+    color: #087ea4;
+}
+
 .footer-container > p > .footer-mail {
     color: #70B7B9;
     font-weight: 500;

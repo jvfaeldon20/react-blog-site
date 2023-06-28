@@ -3,22 +3,22 @@
         "title": "How to manipulate data using props and context",
         "author": "JV Faeldon",
         "content": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio exercitationem earum voluptatibus ex! Modi nesciunt numquam inventore ullam culpa suscipit nihil, sed vel illum similique pariatur consequuntur explicabo ex officia.",
-        "date_posted": "2023-06-26",
-        "id":"1"
+        "date_posted": "2023-06-25",
+        "id":"78fdb8ad-c64c-48e3-8f1c-518993f5773t"
     },
     {
         "title": "Lifecycle of React Components",
         "author": "JV Faeldon",
-        "content": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio exercitationem earum voluptatibus ex! Modi nesciunt numquam inventore ullam culpa suscipit nihil, sed vel illum similique pariatur consequuntur explicabo ex officia.",
+        "content": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio exercitationem earum voluptatibus ex! Modi nesciunt numquam inventore ullam culpa suscipit nihil, sed vel illum similique pariatur consequuntur explicabo ex officia. sit amet consectetur adipisicing elit. sit amet consectetur adipisicing elit. sit amet consectetur adipisicing elit. sit amet consectetur adipisicing elit. sit amet consectetur adipisicing elit. sit amet consectetur adipisicing elit. sit amet consectetur adipisicing elit. sit amet consectetur adipisicing elit. sit amet consectetur adipisicing elit. sit amet consectetur adipisicing elit. ",
         "date_posted": "2023-06-26",
-        "id":"2"
+        "id":"62fdb8er-c25c-87e3-13f1z-8818693f5702h"
     },
     {
         "title": "Reusable components using react hooks",
         "author": "JV Faeldon",
         "content": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio exercitationem earum voluptatibus ex! Modi nesciunt numquam inventore ullam culpa suscipit nihil, sed vel illum similique pariatur consequuntur explicabo ex officia.",
         "date_posted": "2023-06-26",
-        "id":"3"
+        "id":"43fdb8ad-c64c-48e3-8f1c-518093f5755f"
     }
 
 ]

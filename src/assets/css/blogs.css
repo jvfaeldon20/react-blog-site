@@ -1,11 +1,10 @@
 .card-container {
     width: 1200px;
     display: grid;
-    gap: 10px;
+    gap: 60px;
     grid-template-columns: repeat(3, 1fr);
     margin: auto;
-    padding: 10px;
-    padding-left: 40px;
+    padding: 20px 10px;
 }
 
 .card-container > .card-header {
@@ -15,12 +14,31 @@
 
 .card-container > .card-item {
     background-color: #61aaac21;
-    height: 350px;
+    height: 320px;
     width: 300px;
     padding: 30px;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.card-container > .card-item:hover{
+    box-shadow: 0 6px 12px #70b6b9be;
+    cursor: pointer;
+}
+
+.card-no-data {
+    background-color: #61aaac21;
+    width: 1200px;
+    margin: auto;
+    justify-content: center;
+    padding-top: 12vh;
+    height: 200px;
+    display: flex;
+    font-size: 50px;
+    color: #3d4c537d;
 }
 
 .card-container > .card-item > .card-footer > .btn-success {
@@ -33,7 +51,7 @@
 }
 
 .card-item > .card-main > .blog-author > .author-name {
-    color: #3D4C53;
+    color: #087ea4;
     font-weight: 500;
     width: fit-content;
 }
@@ -42,4 +60,53 @@
     color: #3D4C53;
     font-weight: 200;
     margin-left: 30px;
+}
+
+.form-container-edit{
+    width: 1200px;
+    height: 230px;
+    padding: 20px 0 30px 0;
+    margin: auto;
+    background-color: #a8cf557f ;
+}
+
+.form-container-edit > .form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.form-container-edit > .form > p {
+    padding: 0 30px;
+}
+
+.form-container-edit > .form > p > button {
+    margin-right: 5px;
+}
+
+.form-input {
+    display: block;
+    width: 500px;
+    height: 40px;
+    padding-left: 10px;
+    font-size: 15px;
+    margin: 5px 0 10px 0;
+}
+
+.form-require-input {
+    color: #F14440;
+}
+
+.form-textarea {
+    display: block;
+    width: 500px;
+    padding-left: 5px;
+    font-size: 15px;
+    margin: 5px 0 10px 0;
+    padding: 5px;
+}
+
+.form-input, .form-textarea {
+    border-radius: 5px;
+    border: 1px solid #e2e2e2;
 }

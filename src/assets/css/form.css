@@ -20,9 +20,13 @@
     display: block;
     width: 500px;
     height: 40px;
-    padding-left: 5px;
+    padding-left: 10px;
     font-size: 15px;
     margin: 5px 0 10px 0;
+}
+
+.form-require-input {
+    color: #F14440;
 }
 
 .form-textarea {
@@ -42,15 +46,16 @@
 .action-container {
     width: 1200px;
     margin: auto;
-    height: 50px;
-    padding-top: 10px;
+    height: 38px;
+    padding-top: 20px;
     display: flex;
     justify-content: space-between;
 }
 
-.action-container > .item-filter {
-    width: 150px;
+.action-container > div >  .item-filter {
+    width: 120px;
+    height: 38px;
     font-size: 15px;
-    padding-left: 20px;
+    padding: 0 10px;
 }
 

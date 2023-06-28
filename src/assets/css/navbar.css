@@ -13,9 +13,13 @@
 
 .navbar-container > .navbar-brand > .navbar-logo {
     color: #3D4C53;
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 22px;
+    font-weight: 500;
     text-decoration: none;
+}
+
+.navbar-container > .navbar-brand > .navbar-logo > span {
+    font-weight: 700;
 }
 
 .navbar-container > .navbar-menu > li{
@@ -31,5 +35,5 @@
 }
 
 .navbar-container > .navbar-menu > li > a:hover {
-    text-decoration: underline;
+    color: #087ea4;
 }
