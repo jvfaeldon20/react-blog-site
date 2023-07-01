@@ -29,6 +29,7 @@ const handleEditBlog = (blog) => {
 
 const showAddBlog = (blog) => {
   setAllowEdit(false)
+  resetInputs()
   setShowForm(true)
 }
 
