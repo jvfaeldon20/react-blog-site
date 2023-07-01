@@ -27,12 +27,20 @@ body {
   background-color: #A9CF55;
 }
 
+.btn-update {
+  background-color: #cfa455;
+}
+
 .btn-danger {
   background-color: #F14440;
 }
 
-.btn-accent-1{
+.accent-1{
   background-color: cadetblue;
+}
+
+.accent-2{
+  background-color: #91a860;
 }
 
 .btn-default {
