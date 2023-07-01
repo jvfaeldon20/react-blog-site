@@ -1,75 +1,188 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import '../assets/css/blogs.css'
-import { v4 as uuidv4 } from 'uuid';
+import '../assets/css/form.css'
+import { v4 as uuidv4 } from 'uuid'
 
-function Blogs(props) {
-const [showEditBlog, setShowEditBlog] = useState(false)
-const [inputValues, setInputValues] = useState({
-  title: "",
-  author: "",
-  date_posted: "",
-  content: "",
-  id: 0,
-})
+function Blogs({blogs, onDeleteBlog, onAddBlog, onUpdateBlog}) {
+const [showForm, setShowForm] = useState(false)
+const [allowEdit, setAllowEdit] = useState(false)
+const [id, setID] = useState("")
+const [title, setTitle] = useState("")
+const [author, setAuthor] = useState("")
+const [datePosted, setDatePosted] = useState("")
+const [content, setContent] = useState("")
+const [selectedFilter, setSelectedFilter] = useState("ALL")
 
 const handleDeleteBlog = (id) => {
-  props.onDeleteBlog(id)
+  onDeleteBlog(id)
 }
 
-const handleEditBlog = (id) => {
-  let getBlogData = props.blogs.find((blog) => blog.id === id)
-  setInputValues({
-    title: getBlogData.title,
-    author: getBlogData.author,
-    date_posted: getBlogData.date_posted,
-    content: getBlogData.content,
-    id: getBlogData.id,
-  })
-  setShowEditBlog(true)
+const handleEditBlog = (blog) => {  
+  setAllowEdit(true)
+  setID(blog.id)
+  setTitle(blog.title)
+  setAuthor(blog.author)
+  setDatePosted(blog.date_posted)
+  setContent(blog.content)
+  setShowForm(true)
 }
 
-const handleUpdateBlog = (e) => {
+const showAddBlog = (blog) => {
+  setAllowEdit(false)
+  setShowForm(true)
+}
+
+const handleUpdate = (e) => {
   e.preventDefault()
-  props.onUpdateBlog(inputValues)  
+  onUpdateBlog(id,
+    {
+      title: title,
+      author: author,
+      date_posted: datePosted,
+      content: content
+    })
+  setShowForm(false)
 }
 
-const handleInputChange = (e) => {
-  setInputValues({...inputValues, [e.target.name]:e.target.value, id: uuidv4()})
+const handleSave = (e) => {
+  e.preventDefault()
+  onAddBlog({
+    id: uuidv4(),
+    title: title,
+    author: author,
+    date_posted: datePosted,
+    content: content
+  })
+
+  resetInputs()
+  setShowForm(false)
 }
 
-const toggleEditBlog = () => {
-  setShowEditBlog(!showEditBlog)
+const handleTitleChange = (e) => {
+  setTitle(e.target.value)
+} 
+
+const handleAuthorChange = (e) => {
+  setAuthor(e.target.value)
+} 
+
+const handleDatePostedChange = (e) => {
+  setDatePosted(e.target.value)
+} 
+
+const handleContentChange = (e) => {
+  setContent(e.target.value)
+} 
+
+const resetInputs = () => {
+  setID("")
+  setTitle("")
+  setAuthor("")
+  setDatePosted("")
+  setContent("")
 }
 
+const filterData = () => {
+  return Array.from(new Set(blogs.map((data) => data.date_posted))).map((date, i) => (
+    <option key={i} value={date}>
+      {date}
+    </option>
+  ));
+};
+
+
+const filteredBlogs = selectedFilter === "ALL" ? blogs : blogs.filter(blog => blog.date_posted === selectedFilter);
 
   return (
-    props.blogs.length > 0 ? (
-      <>
-      { showEditBlog &&
-      <section className='form-container-edit'>
-          <form className='form' onSubmit={handleUpdateBlog}>
-              <p> 
-                  <label htmlFor="title">Title <span className="form-require-input">*</span></label>
-                  <input type="text" id='title' name='title' className='form-input' value={inputValues.title} onChange={handleInputChange} required/>
-                  <label htmlFor="author">Author <span className="form-require-input">*</span></label>
-                  <input type="text" id='author' name='author' className='form-input' value={inputValues.author} onChange={handleInputChange} required/>
-                  <label htmlFor="date">Date <span className="form-require-input">*</span></label>
-                  <input type="date" id='date' name='date_posted' className='form-input' value={inputValues.date_posted} onChange={handleInputChange} required/>
-              </p>
-              <p>
-                  <label htmlFor="content">Content <span className="form-require-input">*</span></label><br/>
-                  <textarea name="content" id="content" rows="7" className='form-textarea' value={inputValues.content} onChange={handleInputChange} required></textarea>
-                  <button type='submit' className='btn btn-accent-1'>Update</button>
-                  <button className='btn btn-danger' onClick={toggleEditBlog}>Cancel</button>
-              </p>
-          </form>
-      </section> }  
-      <section className="card-container">
+      <div>
+        <div className='action-container'>
+            <button className='btn btn-success' onClick={showAddBlog} >New Blog</button>
+            <div>
+                <span>Filter by: </span>
+                <select
+                  className='item-filter' 
+                  id="date-filter"
+                  value={selectedFilter}
+                  onChange={(e) => setSelectedFilter(e.target.value)}
+                >
+                  <option value="ALL">ALL</option>
+                  {filterData()}
+                </select>
+            </div>
+        </div>
+        
+        {
+          showForm &&
+            <section className={allowEdit ? "form-container update" : "form-container save"}>
+              <form
+                key={id}
+                className='form'
+                onSubmit={allowEdit ?  handleUpdate : handleSave}  
+              > 
+                  <p> 
+                      {/*BLOG TITLE*/} 
+                      <label htmlFor="title">Title <span className="form-require-input">*</span></label>
+                      <input 
+                          type="text" 
+                          id='title' 
+                          name='title' 
+                          className='form-input'
+                          value={title}
+                          onChange={handleTitleChange}
+                          required 
+                      />
+                      
+                      {/*BLOG AUTHOR*/} 
+                      <label htmlFor="author">Author <span className="form-require-input">*</span></label>
+                      <input 
+                          type="text" 
+                          id='author' 
+                          name='author' 
+                          className='form-input'
+                          value={author}
+                          onChange={handleAuthorChange}
+                          required
+                      />
+                      
+                      {/*BLOG DATE*/} 
+                      <label htmlFor="date">Date <span className="form-require-input">*</span></label>
+                      <input 
+                          type="date" 
+                          id='date' 
+                          name='date_posted' 
+                          className='form-input'
+                          value={datePosted}
+                          onChange={handleDatePostedChange}
+                          required
+                      />
+                  </p>
+                  <p>
+                      {/*BLOG CONTENT*/} 
+                      <label htmlFor="content">Content <span className="form-require-input">*</span></label><br/>
+                      <textarea 
+                          name="content" 
+                          id="content" 
+                          rows="7" 
+                          className='form-textarea'
+                          value={content}
+                          onChange={handleContentChange}
+                          required
+                      ></textarea>
+                      <button type='submit' className={allowEdit ? "btn accent-1" : "btn update"}>{allowEdit ? "Update" : "Save"}</button>
+                      <button type='submit' className="btn btn-danger ml-5" onClick={() => setShowForm(false)}>Cancel</button>
+                  </p>
+              </form>
+            </section>
+        }
+
+      {
+        blogs.length > 0 ? (
+          <section className="card-container">
             {
-              props.blogs.map((blog)=> {
+              filteredBlogs.map((blog)=> {
                 let content   = blog.content;
                 let substring = content.length > 220 ? `${content.substring(0,220)}...` : content
-
+  
                 return(
                   <div className='card-item' key={blog.id}>
                       <div className="card-main">
@@ -78,18 +191,20 @@ const toggleEditBlog = () => {
                           <p className='blog-content'>{substring}</p>
                       </div>               
                       <div className="card-footer">
-                          <button className='btn btn-success' onClick={() => handleEditBlog(blog.id)}>Edit</button>
+                          <button className='btn btn-success' onClick={() => handleEditBlog(blog)}>Edit</button>
                           <button className='btn btn-danger' onClick={() => handleDeleteBlog(blog.id)}>Delete</button>
                       </div>        
                   </div>
                 )
               })
             }
-        </section>
-      </>
-    ) : (
-     <section className='card-no-data'>No Blog Content</section>
-    )  
+          </section>
+        ) : (
+          <section className='card-no-data'>No Blog Content</section>
+        )
+      }
+
+    </div>  
   )
 }
 

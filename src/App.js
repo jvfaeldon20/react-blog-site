@@ -1,64 +1,47 @@
-import React,{useState, useEffect} from 'react'
+import React,{useState} from 'react'
 import './App.css';
 import Navbar from './component/Navbar';
 import Footer from './component/Footer';
 import Blogs from './component/Blogs';
-import Form from './component/Form';
 import BlogItems from './data/blog-post.json'
 
 function App() {
 const [blogs, setBlogs] = useState(BlogItems)
-const [dateFilter, setDateFilter] = useState([])
 
-const handleNewBlog = (newBlog) => {
-  setBlogs((prevBlogs) => [...prevBlogs, newBlog])
-}
-
-const handleEditBlog = ({ id, title, author, date_posted, content }) => {
-  setBlogs((prevBlogs) =>
-    prevBlogs.map((blog) =>
-      blog.id === id
-        ? {
-            ...blog,
-            title: title,
-            author: author,
-            date_posted: date_posted,
-            content: content,
-          }
-        : blog
-    )
-  );
-};
-
-
-const handleDeleteBlog = (id) => {
+const deleteBlog = (id) => {
   setBlogs(blogs.filter((blog) => blog.id !== id))
 }
 
-const handleFilterItems = (option) => {
-  console.log(option)
-  if(option !== "ALL"){
-    setBlogs(blogs.filter((blog) => blog.date_posted === option))
-  }
-} 
+const addBlog = (newBlog) => {
+  setBlogs((prevBlogs) => [...prevBlogs, newBlog])
+}
 
-useEffect(()=>{
-  let dateKeyItems = blogs.map(item => item.date_posted)
-  setDateFilter([...new Set(dateKeyItems)])
-}, [blogs])
+const updateBlog = (updateID, updateItem) => {
+  setBlogs((prevBlogs) => 
+    prevBlogs.map((blog) => blog.id === updateID ?  
+      { ...blog, 
+        title: updateItem.title,
+        author: updateItem.author,
+        date_posted: updateItem.date_posted,
+        content: updateItem.content,
+      } : blog
+    )
+  )
+}
 
-  return (
+// useEffect(() => {
+//   const fetchDatePosted = blogs.map(item => item.date_posted)
+//   setDateFilter([...new Set(fetchDatePosted)])
+// },[blogs])
+
+return (
     <div className="App">
       <Navbar/>
-      <Form 
-        dateFilterItems={dateFilter}
-        onAddBlog={handleNewBlog}
-        onFilter={handleFilterItems} 
-      />
-      <Blogs 
+      <Blogs
         blogs={blogs}
-        onDeleteBlog={handleDeleteBlog} 
-        onUpdateBlog={handleEditBlog}
+        onDeleteBlog={deleteBlog}
+        onAddBlog={addBlog}
+        onUpdateBlog={updateBlog} 
       />
       <Footer/>
     </div>
