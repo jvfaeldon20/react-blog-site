@@ -29,11 +29,6 @@ const updateBlog = (updateID, updateItem) => {
   )
 }
 
-// useEffect(() => {
-//   const fetchDatePosted = blogs.map(item => item.date_posted)
-//   setDateFilter([...new Set(fetchDatePosted)])
-// },[blogs])
-
 return (
     <div className="App">
       <Navbar/>
