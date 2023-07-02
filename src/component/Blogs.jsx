@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import '../assets/css/blogs.css'
 import '../assets/css/form.css'
 import { v4 as uuidv4 } from 'uuid'
@@ -83,13 +83,11 @@ const resetInputs = () => {
   setContent("")
 }
 
-const filterData = () => {
+const filterData = useMemo(() => {
   return Array.from(new Set(blogs.map((data) => data.date_posted))).map((date, i) => (
-    <option key={i} value={date}>
-      {date}
-    </option>
+    <option key={i} value={date}>{date}</option>
   ));
-};
+},[blogs])
 
 
 const filteredBlogs = selectedFilter === "ALL" ? blogs : blogs.filter(blog => blog.date_posted === selectedFilter);
@@ -107,7 +105,7 @@ const filteredBlogs = selectedFilter === "ALL" ? blogs : blogs.filter(blog => bl
                   onChange={(e) => setSelectedFilter(e.target.value)}
                 >
                   <option value="ALL">ALL</option>
-                  {filterData()}
+                  {filterData}
                 </select>
             </div>
         </div>

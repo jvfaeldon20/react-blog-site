@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useCallback} from 'react'
 import './App.css';
 import Navbar from './component/Navbar';
 import Footer from './component/Footer';
@@ -8,9 +8,9 @@ import BlogItems from './data/blog-post.json'
 function App() {
 const [blogs, setBlogs] = useState(BlogItems)
 
-const deleteBlog = (id) => {
+const deleteBlog = useCallback((id) => {
   setBlogs(blogs.filter((blog) => blog.id !== id))
-}
+}, [blogs])
 
 const addBlog = (newBlog) => {
   setBlogs((prevBlogs) => [...prevBlogs, newBlog])
