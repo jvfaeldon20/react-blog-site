@@ -84,13 +84,18 @@ const resetInputs = () => {
 }
 
 const filterData = useMemo(() => {
-  return Array.from(new Set(blogs.map((data) => data.date_posted))).map((date, i) => (
-    <option key={i} value={date}>{date}</option>
-  ));
-},[blogs])
+  if (blogs && blogs.length > 0) {
+    const getDatePosted = blogs.map((data) => data.date_posted);
+    return Array.from(new Set(getDatePosted)).map((date, i) => (
+      <option key={i} value={date}>{date}</option>
+    ));
+  }
+  return null;
+}, [blogs]);
 
 
 const filteredBlogs = selectedFilter === "ALL" ? blogs : blogs.filter(blog => blog.date_posted === selectedFilter);
+const hasBlogs = Boolean(blogs.length);
 
   return (
       <div>
@@ -175,7 +180,7 @@ const filteredBlogs = selectedFilter === "ALL" ? blogs : blogs.filter(blog => bl
         }
 
       {
-        blogs.length > 0 ? (
+        blogs && hasBlogs ? (
           <section className="card-container">
             {
               filteredBlogs.map((blog)=> {
